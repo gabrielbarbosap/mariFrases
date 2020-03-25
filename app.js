@@ -1,12 +1,13 @@
-const http = require('http');
+var http = require('http');
+var fs = require('fs');
 const port = process.env.PORT || 3000
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end('<h1>Hello World</h1>');
+var server = http.createServer(function (request, response) {
+  fs.readFile("./index.html", function (err, data) {
+    response.end(data);
+  });
 });
 
-server.listen(port,() => {
-  console.log(`Server running at port `+port);
+server.listen(3000, function () {
+  console.log('Servidor rodando na porta 3000');
 });
