@@ -3,7 +3,7 @@ var fs = require('fs');
 const port = process.env.PORT || 3000
 
 var server = http.createServer(function (request, response) {
-  fs.readFile("./index.html", function (err, data) {
+  fs.readFile(__dirname + "./index.html", function (err, data) {
     response.end(data);
   });
 });
